@@ -3,4 +3,5 @@ int main() {
   println("Hello world");
   input("Enter stuff", var);
   println(var);
+  print("This one has no newline!");
 }
