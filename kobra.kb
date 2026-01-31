@@ -1,3 +1,6 @@
 int main() {
+  int var;
   println("Hello world");
+  input("Enter stuff", var);
+  println(var);
 }
