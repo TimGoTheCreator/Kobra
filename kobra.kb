@@ -1,5 +1,5 @@
 int main() {
-  int var;
+  i32 var;
   println("Hello world");
   input("Enter stuff", var);
   println(var);
