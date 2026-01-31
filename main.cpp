@@ -24,13 +24,14 @@ int main() {
 
     bool need_iostream = false;
 
-    // detect println or input
+    // detect println, print, input
     for (auto &l : lines)
-        if (l.find("println") != std::string::npos ||
-            l.find("input(") != std::string::npos)
+        if (l.find("println(") != std::string::npos ||
+            l.find("print(")   != std::string::npos ||
+            l.find("input(")   != std::string::npos)
             need_iostream = true;
 
-    // translate println and input
+    // translate println, print, input
     for (auto &l : lines) {
 
         // println(...)
@@ -38,6 +39,14 @@ int main() {
             size_t end = l.find(")", pos);
             std::string inside = l.substr(pos + 8, end - (pos + 8));
             l = l.substr(0, pos) + "std::cout << " + inside + " << '\\n'" + l.substr(end + 1);
+        }
+
+        // print(...) — no newline
+        if (size_t pos = l.find("print("); pos != std::string::npos &&
+            l.find("println(") == std::string::npos) { // avoid double-handling println
+            size_t end = l.find(")", pos);
+            std::string inside = l.substr(pos + 6, end - (pos + 6));
+            l = l.substr(0, pos) + "std::cout << " + inside + ";" + l.substr(end + 1);
         }
 
         // input(prompt, var)
