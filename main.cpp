@@ -97,7 +97,7 @@ int main() {
     if (need_iostream)
         out << "#include <iostream>\n#include <limits>\n";
 
-    out << "#include \"kobra_macros.h\"\n";
+    out << "#include \"macro.h\"\n";
 
     out << "\n";
 
