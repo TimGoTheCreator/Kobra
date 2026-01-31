@@ -4,4 +4,7 @@ int main() {
   input("Enter stuff", var);
   println(var);
   print("This one has no newline!");
+  string var2;
+  inputln("This one is a input with NL!", var2);
+  print("Told ya");
 }
